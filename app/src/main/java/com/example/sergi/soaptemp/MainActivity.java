@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.sergi.soaptemp.WS.TempConvertSoap;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String SOAP_ACTION = "http://www.w3schools.com/webservices/FahrenheitToCelsius";
     private static final String METHOD = "FahrenheitToCelsius";
 
+    TempConvertSoap service;
+
     TextView txt;
 
     @Override
@@ -48,13 +52,27 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText edt = (EditText)findViewById(R.id.value_to_convert);
         Button btn = (Button)findViewById(R.id.convert);
+        Button btnEasyWSDL = (Button)findViewById(R.id.convertEasyWSDL);
         txt = (TextView)findViewById(R.id.answer);
+
+        service = new TempConvertSoap();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (edt.length() > 0) {
                     new getCelsius().execute(edt.getText().toString());
+                } else {
+                    txt.setText("Fahrenheit value can not be empty.");
+                }
+            }
+        });
+
+        btnEasyWSDL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (edt.length() > 0) {
+                    new getCelsiusUsingEasyWSDL().execute(edt.getText().toString());
                 } else {
                     txt.setText("Fahrenheit value can not be empty.");
                 }
@@ -97,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         // Transport
         HttpTransportSE transport = new HttpTransportSE(MAIN_REQUEST_URL);
 
-        // Llamada
+        // Call
         try {
             transport.call(SOAP_ACTION, envelope);
         } catch (IOException e) {
@@ -132,5 +150,25 @@ public class MainActivity extends AppCompatActivity {
             txt.setText(result);
         }
 
+    }
+
+    public class getCelsiusUsingEasyWSDL extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... text) {
+            String result = "";
+            try {
+                result = service.FahrenheitToCelsius(text[0]);
+                Log.i("WSDL", "Using EasyWSDL");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            txt.setText(result);
+        }
     }
 }

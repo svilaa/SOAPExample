@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EasyWSDL>
+  <Info>
+    <Version>4.1.9.1</Version>
+    <AccountType>Basic</AccountType>
+    <LibrariesFolder>libs/easywsdl</LibrariesFolder>
+  </Info>
+  <Settings>
+    <Url>http://www.w3schools.com/xml/tempconvert.asmx?WSDL</Url>
+    <ClassPrefix/>
+    <PackageName>com.example.sergi.soaptemp.WS</PackageName>
+    <AddDocumentation>false</AddDocumentation>
+    <EnableAdvancedFeatures>false</EnableAdvancedFeatures>
+    <EnableMTOM>false</EnableMTOM>
+    <EncodeIllegalCharacters>true</EncodeIllegalCharacters>
+    <GenerateAsyncOperations>true</GenerateAsyncOperations>
+    <ImplementSerializable>false</ImplementSerializable>
+    <AddAnyCollection>false</AddAnyCollection>
+    <UseJodaTime>false</UseJodaTime>
+  </Settings>
+  <Files>
+    <File>FERExtendedSoapSerializationEnvelope.java</File>
+    <File>FERFunctions.java</File>
+    <File>FERHelper.java</File>
+    <File>FERIServiceEvents.java</File>
+    <File>FERMarshalGuid.java</File>
+    <File>FEROperationResult.java</File>
+    <File>FERTempConvertSoap.java</File>
+    <File>FERTempConvertSoap12.java</File>
+  </Files>
+  <Libraries>
+    <File>ksoap2-android-assembly-3.6.0-jar-with-dependencies.jar</File>
+  </Libraries>
+</EasyWSDL>

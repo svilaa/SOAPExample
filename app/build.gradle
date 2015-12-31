@@ -16,14 +16,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        repositories {
-            maven { url 'http://ksoap2-android.googlecode.com/svn/m2-repo' }
-        }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.code.ksoap2-android:ksoap2-android:3.1.1'
+    compile files('libs/easywsdl/ksoap2-android-assembly-3.6.0-jar-with-dependencies.jar')
 }

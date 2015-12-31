@@ -19,6 +19,13 @@
     android:text="Convert to Celsius"
     android:id="@+id/convert" />
 
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Convert to Celsius (EasyWSDL)"
+        android:id="@+id/convertEasyWSDL" />
+
     <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
